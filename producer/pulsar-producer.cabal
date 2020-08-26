@@ -8,6 +8,11 @@ maintainer:          gabriel.volpe@chatroulette.com
 build-type:          Simple
 extra-source-files:  README.md
 
+custom-setup
+  setup-depends:       base
+                     , Cabal
+                     , proto-lens-setup
+
 executable pulsar-producer
   main-is:             Main.hs
   build-depends:       base

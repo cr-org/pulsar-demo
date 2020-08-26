@@ -5,7 +5,7 @@ Integration of a producer written in Haskell (using the [supernova](https://gith
 
 ### Run it
 
-Start a Pulsar instance using Docker:
+Start a Pulsar instance using Docker.
 
 ```
 $ docker run -it \
@@ -17,14 +17,20 @@ $ docker run -it \
   bin/pulsar standalone
 ```
 
-Run the consumer:
+Run the consumer.
 
 ```
-nix-shell --run "cd consumer && bloop run root"
+cd consumer
+nix-shell --run "sbt run"
 ```
 
-Run the producer:
+[![consumer](https://asciinema.org/a/xc068c7UlpQyIuBYYHorZkzHs.png)](https://asciinema.org/a/xc068c7UlpQyIuBYYHorZkzHs)
+
+Run the producer.
 
 ```
-nix-shell --run "cd producer && cabal new-run"
+cd producer
+nix-shell --run "cabal new-run"
 ```
+
+[![producer](https://asciinema.org/a/j9NiQeylYtG7ncHYXWM6CPZOp.png)](https://asciinema.org/a/j9NiQeylYtG7ncHYXWM6CPZOp)

@@ -19,6 +19,7 @@ lazy val root = (project in file("."))
       Libraries.circeCore,
       Libraries.circeGeneric,
       Libraries.circeParser,
-      Libraries.neutron
+      Libraries.neutronCore,
+      Libraries.neutronCirce
     )
   )

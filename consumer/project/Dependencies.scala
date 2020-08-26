@@ -4,7 +4,7 @@ object Dependencies {
 
   object Versions {
     val circe       = "0.13.0"
-    val neutron     = "0.0.0+1-7d777064-SNAPSHOT"
+    val neutron     = "0.0.2"
 
     val betterMonadicFor = "0.3.1"
     val contextApplied   = "0.1.2"
@@ -18,7 +18,8 @@ object Dependencies {
     val circeGeneric = circe("circe-generic")
     val circeParser  = circe("circe-parser")
 
-    val neutron  = "com.chatroulette" %% "neutron-core" % Versions.neutron
+    val neutronCore  = "com.chatroulette" %% "neutron-core"  % Versions.neutron
+    val neutronCirce = "com.chatroulette" %% "neutron-circe" % Versions.neutron
   }
 
   object CompilerPlugins {
