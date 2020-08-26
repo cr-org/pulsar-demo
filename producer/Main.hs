@@ -20,6 +20,9 @@ data Msg = Msg
   , year :: Int
   } deriving (Generic, FromJSON, ToJSON, Show)
 
+topic :: Topic
+topic = defaultTopic "demo"
+
 messages :: [PulsarMessage]
 messages =
   let msg = [Msg "fromHaskell" 2020, Msg "toScala" 2021]
