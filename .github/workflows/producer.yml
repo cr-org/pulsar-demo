@@ -1,0 +1,21 @@
+name: Producer build
+
+on:
+  pull_request:
+  push:
+    paths:
+      - "producer/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v2.1.0"
+      - uses: "cachix/install-nix-action@v9"
+      - uses: "cachix/cachix-action@v6"
+        with:
+          name: hpulsar
+          signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
+      - name: "Build producer 🚧"
+        run: cd producer && nix-shell --run "cabal new-build" && cd ..
+

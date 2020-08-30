@@ -15,7 +15,7 @@ let
         pkgs.fetchFromGitHub {
           owner  = "cr-org";
           repo   = "supernova";
-          rev    = "v0.0.1";
+          rev    = "0bc33b22b1499c6221a865ab0aa481553852cd04";
           sha256 = "1jfiaib3h6gmffwsg7d434di74x5v5pbwfifqw3l1mcisxijqm3s";
         };
     };

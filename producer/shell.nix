@@ -13,7 +13,6 @@ in
         brittany
         cabal-install
         hlint
-        pkgs.protobuf
       ];
       shellHook = ''
         export NIX_GHC="$(which ghc)"
