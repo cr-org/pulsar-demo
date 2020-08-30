@@ -2,7 +2,11 @@ name: Consumer build
 
 on:
   pull_request:
+    paths:
+      - "consumer/**"
   push:
+    branches:
+      - master
     paths:
       - "consumer/**"
 
@@ -13,5 +17,4 @@ jobs:
       - uses: "actions/checkout@v2.1.0"
       - uses: "cachix/install-nix-action@v9"
       - name: "Build consumer 🚧"
-        run: cd producer && nix-shell --run "sbt compile" && cd ..
-
+        run: cd consumer && nix-shell --run "sbt compile" && cd ..

@@ -2,7 +2,11 @@ name: Producer build
 
 on:
   pull_request:
+    paths:
+      - "producer/**"
   push:
+    branches:
+      - master
     paths:
       - "producer/**"
 
@@ -18,4 +22,3 @@ jobs:
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
       - name: "Build producer 🚧"
         run: cd producer && nix-shell --run "cabal new-build" && cd ..
-
