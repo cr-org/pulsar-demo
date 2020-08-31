@@ -1,0 +1,20 @@
+name: Consumer build
+
+on:
+  pull_request:
+    paths:
+      - "consumer/**"
+  push:
+    branches:
+      - master
+    paths:
+      - "consumer/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v2.1.0"
+      - uses: "cachix/install-nix-action@v9"
+      - name: "Build consumer 🚧"
+        run: cd consumer && nix-shell --run "sbt compile" && cd ..
