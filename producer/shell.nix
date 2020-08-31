@@ -1,8 +1,8 @@
 let
   packages = import ./pkgs.nix {};
-  inherit (packages) pkgs hp;
+  inherit (packages) pkgs hp supernova;
 
-  drv = hp.callCabal2nix "pulsar-producer" ./. {};
+  drv = hp.callCabal2nix "pulsar-producer" ./. { inherit supernova; };
 in
   {
     my_project = drv;
