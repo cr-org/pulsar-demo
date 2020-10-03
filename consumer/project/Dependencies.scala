@@ -4,7 +4,7 @@ object Dependencies {
 
   object Versions {
     val circe       = "0.13.0"
-    val neutron     = "0.0.2"
+    val neutron     = "0.0.3"
 
     val betterMonadicFor = "0.3.1"
     val contextApplied   = "0.1.2"

@@ -1,4 +1,4 @@
-{ compiler ? "ghc883" }:
+{ compiler ? "ghc884" }:
 
 let
   pkgs = import (
@@ -11,9 +11,9 @@ let
 
   supernovaPkg =
     builtins.fetchTarball {
-      name   = "supernova-v0.0.2";
-      url    = "https://github.com/cr-org/supernova/archive/da948bb.tar.gz";
-      sha256 = "1w6rxhnijwckw3wyzqddiyc1p90sk2wzq9qnl5zg0cw4djkxs46h";
+      name   = "supernova-v0.0.3";
+      url    = "https://github.com/cr-org/supernova/archive/e54ab43.tar.gz";
+      sha256 = "1vwl26nkqwfyxmirvpk8j20cnla8dqy8gvvwaxjyxb9pacgw7yix";
     };
 
   newSupernova = pkgs.callPackage supernovaPkg {};
