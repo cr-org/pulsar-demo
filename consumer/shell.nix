@@ -1,29 +1,25 @@
-let
-  config = {
-    packageOverrides = pkgs: rec {
-      sbt = pkgs.sbt.overrideAttrs (
-        old: rec {
-          version = "1.3.12";
+{ jdk ? "jdk11" }:
 
-          patchPhase = ''
-            echo -java-home ${pkgs.openjdk11} >> conf/sbtopts
-          '';
-        }
-      );
+let
+  nixpkgs = fetchTarball {
+    name   = "nixos-unstable-2020-09-25";
+    url    = "https://github.com/NixOS/nixpkgs-channels/archive/72b9660dc18b.tar.gz";
+    sha256 = "1cqgpw263bz261bgz34j6hiawi4hi6smwp6981yz375fx0g6kmss";
+  };
+
+  config = {
+    packageOverrides = p: {
+      sbt = p.sbt.override {
+        jre = p.${jdk};
+      };
     };
   };
 
-  pkgs = import (
-    builtins.fetchTarball {
-      name   = "nixos-unstable-2020-08-15";
-      url    = "https://github.com/NixOS/nixpkgs-channels/archive/96745f022835.tar.gz";
-      sha256 = "1jfiaib3h6gmffwsg7d434di74x5v5pbwfifqw3l1mcisxijqm3s";
-    }
-  ) { inherit config; };
+  pkgs = import nixpkgs { inherit config; };
 in
   pkgs.mkShell {
-    buildInputs = with pkgs; [
-      openjdk11
-      sbt
+    buildInputs = [
+      pkgs.${jdk}
+      pkgs.sbt
     ];
   }
