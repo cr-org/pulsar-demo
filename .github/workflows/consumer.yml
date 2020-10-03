@@ -14,7 +14,13 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - uses: "actions/checkout@v2.1.0"
-      - uses: "cachix/install-nix-action@v9"
+      - uses: actions/checkout@v2.1.0
+
+      - name: "Cache for sbt & coursier ♨️"
+        uses: coursier/cache-action@v4.1
+
+      - name: "Install Nix ❄️"
+        uses: nixbuild/nix-quick-install-action@v2
+
       - name: "Build consumer 🚧"
-        run: cd consumer && nix-shell --run "sbt compile" && cd ..
+        run: cd consumer && nix-shell --run "sbt compile"
