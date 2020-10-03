@@ -1,7 +1,7 @@
 pulsar-demo
 ===========
 
-Integration of a producer written in Haskell (using the [supernova](https://github.com/cr-org/supernova) library) and a consumer written in Scala (using the [neutron](https://github.com/cr-org/neutron) library), both created and maintained by ChatRoulette.
+Integration of a producer written in Haskell (using the [supernova](https://github.com/cr-org/supernova) library) and a consumer written in Scala (using the [neutron](https://github.com/cr-org/neutron) library), both created and maintained by [Chatroulette](https://about.chatroulette.com/).
 
 ### Run it
 
