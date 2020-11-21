@@ -20,7 +20,7 @@ jobs:
         uses: coursier/cache-action@v4.1
 
       - name: "Install Nix ❄️"
-        uses: nixbuild/nix-quick-install-action@v2
+        uses: cachix/install-nix-action@v12
 
       - name: "Build consumer 🚧"
         run: cd consumer && nix-shell --run "sbt compile"
