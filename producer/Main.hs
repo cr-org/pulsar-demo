@@ -21,7 +21,7 @@ topic = defaultTopic "demo"
 main :: IO ()
 main = runPulsar (connect defaultConnectData) $ do
   (Producer send) <- newProducer topic
-  liftIO $ sleep 3 >> traverse_ send messages
+  liftIO $ traverse_ send messages >> sleep 1
 
 messages :: [PulsarMessage]
 messages =

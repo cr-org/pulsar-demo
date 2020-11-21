@@ -27,17 +27,16 @@ object Main extends IOApp {
       .withType(Subscription.Type.Shared)
       .build
 
-  val resources: Resource[IO, Consumer[IO, Msg]] =
-    for {
-      pulsar <- Pulsar.create[IO](config.url)
-      consumer <- Consumer.create[IO, Msg](pulsar, topic, subs)
-    } yield consumer
+  val mkConsumer: Resource[IO, Consumer[IO, Msg]] =
+    Pulsar.create[IO](config.url).flatMap { pulsar =>
+      Consumer.create[IO, Msg](pulsar, topic, subs)
+    }
 
   def run(args: List[String]): IO[ExitCode] =
     Deferred[IO, Unit]
       .flatMap { shutdown =>
         Stream
-          .resource(resources)
+          .resource(mkConsumer)
           .evalTap(_ => IO(println("Starting up Pulsar consumer")))
           .flatMap {
             _.autoSubscribe
